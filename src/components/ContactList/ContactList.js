@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import PropTypes from "prop-types";
 import ContactListItem from "../ContactListItem";
-import { useGetContactsQuery } from "../../Redux/contacts/contactsSlice";
+import { useGetContactsQuery } from "../../Redux/contactsAPI";
 import { filterValue } from "../../Redux/contacts/contacts-selectors";
 import styles from "./ContactList.module.css";
 

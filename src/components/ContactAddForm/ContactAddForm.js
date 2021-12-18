@@ -1,7 +1,7 @@
 import {
   useGetContactsQuery,
   useAddContactMutation,
-} from "../../Redux/contacts/contactsSlice";
+} from "../../Redux/contactsAPI";
 import { toast } from "react-toastify";
 import styles from "./ContactAddForm.module.css";
 
@@ -14,10 +14,10 @@ function ContactAddForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     const name = e.currentTarget.name.value;
-    const phone = e.currentTarget.phone.value;
+    const number = e.currentTarget.number.value;
     const newContact = {
       name,
-      phone,
+      number,
     };
     if (contacts.some((contact) => name === contact.name)) {
       toast.error(`${name} is already in contacts`);
@@ -47,7 +47,7 @@ function ContactAddForm() {
         Number
         <input
           type="tel"
-          name="phone"
+          name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
           title="Номер телефона должен состоять цифр и может содержать пробелы, тире, круглые скобки и может начинаться с +"
           required
