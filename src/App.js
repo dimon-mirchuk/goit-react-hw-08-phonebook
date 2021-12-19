@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import Loader from "react-loader-spinner";
 import { BrowserRouter as Router, Switch, Redirect } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import Navigation from "./components/Navigation";
@@ -33,7 +33,7 @@ function App() {
   const isLoggedIn = useSelector(selectCurrentIsLoggedIn);
   const isToken = useSelector(selectCurrentToken);
   const { data: refreshUserData, isFetching } = useRefreshUserQuery();
-
+  // console.log(error);
   useEffect(() => {
     if (!refreshUserData || !isToken) return;
 

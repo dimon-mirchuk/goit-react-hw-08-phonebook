@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import PropTypes from "prop-types";
 import Loader from "react-loader-spinner";
+import { Row, Col, Button } from "antd";
 
 const RegistrationView = ({ onSubmit, error, isLoading }) => {
   const {
@@ -20,68 +21,77 @@ const RegistrationView = ({ onSubmit, error, isLoading }) => {
   }, [error, reset]);
 
   return (
-    <section>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-          <input
-            type="text"
-            name="name"
-            placeholder="name"
-            {...register("name", {
-              required: { value: true, message: "Please enter your name" },
-            })}
-          />
-          {errors.name && <span>{errors.name.message}</span>}
-        </div>
+    <Row align="middle" justify="center">
+      <Col>
+        <section style={{ marginTop: "50px" }}>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <div>
+              <input
+                type="text"
+                name="name"
+                placeholder="name"
+                {...register("name", {
+                  required: { value: true, message: "Please enter your name" },
+                })}
+              />
+              {errors.name && <div>{errors.name.message}</div>}
+            </div>
 
-        <div>
-          <input
-            type="email"
-            name="email"
-            placeholder="email"
-            {...register("email", {
-              required: { value: true, message: "Please enter your email" },
-              pattern: {
-                value: /\S+@\S+\.\S+/,
-                message: "Entered value does not match email format",
-              },
-            })}
-          />
-          {errors.email && <span>{errors.email.message}</span>}
-        </div>
+            <div>
+              <input
+                type="email"
+                name="email"
+                placeholder="email"
+                {...register("email", {
+                  required: { value: true, message: "Please enter your email" },
+                  pattern: {
+                    value: /\S+@\S+\.\S+/,
+                    message: "Entered value does not match email format",
+                  },
+                })}
+              />
+              {errors.email && <div>{errors.email.message}</div>}
+            </div>
 
-        <div>
-          <input
-            type="password"
-            name="password"
-            placeholder="password"
-            {...register("password", {
-              required: {
-                value: true,
-                message: "Please, enter your password",
-              },
-              maxLength: {
-                value: 30,
-                message: "Your password can`t be longer than 30",
-              },
-              minLength: {
-                value: 7,
-                message: "Your password can`t be shorter than 7",
-              },
-            })}
-          />
-          {errors.password && <span>{errors.password.message}</span>}
-        </div>
+            <div>
+              <input
+                type="password"
+                name="password"
+                placeholder="password"
+                {...register("password", {
+                  required: {
+                    value: true,
+                    message: "Please, enter your password",
+                  },
+                  maxLength: {
+                    value: 30,
+                    message: "Your password can`t be longer than 30",
+                  },
+                  minLength: {
+                    value: 7,
+                    message: "Your password can`t be shorter than 7",
+                  },
+                })}
+              />
+              {errors.password && <div>{errors.password.message}</div>}
+            </div>
 
-        <button type="submit">
-          {isLoading ? (
-            <Loader type="ThreeDots" color="#69007e" height={20} width={35} />
-          ) : (
-            "ENTER"
-          )}
-        </button>
-      </form>
-    </section>
+            <Button htmlType="submit" type="primary">
+              {isLoading ? (
+                <Loader
+                  type="ThreeDots"
+                  color="#69007e"
+                  height={20}
+                  width={35}
+                />
+              ) : (
+                "ENTER"
+              )}
+            </Button>
+          </form>
+        </section>
+      </Col>
+    </Row>
   );
 };
 
