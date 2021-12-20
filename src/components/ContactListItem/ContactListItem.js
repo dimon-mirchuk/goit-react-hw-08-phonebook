@@ -9,7 +9,7 @@ const ContactListItem = ({ contact }) => {
   return (
     <li id={contact.id} className={item}>
       <p className={text}>
-        {contact.name}: <span className={span}>{contact.phone}</span>
+        {contact.name}: <span className={span}>{contact.number}</span>
       </p>
       <button
         type="button"

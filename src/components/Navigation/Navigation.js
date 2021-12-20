@@ -37,6 +37,7 @@ const Navigation = ({ isLoggedIn }) => {
                 onClick={handleClick}
                 selectedKeys={[current]}
                 mode="horizontal"
+                style={{ width: "170px" }}
               >
                 <Menu.Item key="Sign in">
                   <Link to="/login">Sign in</Link>
